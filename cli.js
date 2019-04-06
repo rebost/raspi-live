@@ -36,9 +36,10 @@ program
   .option('-l, --list-size <list-size>', 'number of streaming files in the playlist', Number, 10)
   .option('-s, --storage-size <storage-size>', 'number of streaming files for storage purposes', Number, 10)
   .option('-p, --port <port>', 'port number the server runs on', Number, 8080)
-  .action(({ directory, format, width, height, framerate, horizontalFlip = false, verticalFlip = false, rotation,compressionLevel, time, listSize, storageSize, port }) => {
-    console.log('configuration:', directory, format, width, height, framerate, horizontalFlip, verticalFlip, rotation, compressionLevel, time, listSize, storageSize, port);
-    server(directory, format, width, height, framerate, horizontalFlip, verticalFlip, rotation, compressionLevel, time, listSize, storageSize, port);
+  .option('-n, --nopreview', 'Do not display a preview window')
+  .action(({ directory, format, width, height, framerate, horizontalFlip = false, verticalFlip = false, rotation, compressionLevel, time, listSize, storageSize, port, nopreview = false }) => {
+    console.log('configuration:', directory, format, width, height, framerate, horizontalFlip, verticalFlip, rotation, compressionLevel, time, listSize, storageSize, port, nopreview);
+    server(directory, format, width, height, framerate, horizontalFlip, verticalFlip, rotation, compressionLevel, time, listSize, storageSize, port, nopreview);
   });
 
 program.parse(process.argv);
